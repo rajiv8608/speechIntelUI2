@@ -1,0 +1,39 @@
+<!-- <si-spinner *ngIf="loading"></si-spinner> -->
+ 
+ <div class="wrapper">
+  <div class="myForm">
+    <img src="./assets/images/Logo_Final.png" class="imgLogo">
+    
+    <form [formGroup]="loginForm" class="myLoginForm" (ngSubmit)="loginUser()">
+      <div class="formFields">
+        <label class="label" for="username" id="username">Username:</label>
+        <div>
+          <input [ngClass]="{'has-error':loginForm.controls['username'].errors?.required  && loginForm.controls['username'].dirty}" type="username" class="inputFields form-control" formControlName="username" id="username" name="username">
+          <div class="validationMessage" *ngIf="loginForm.controls['username'].errors?.required  && loginForm.controls['username'].dirty">
+            <em>Please enter username</em>
+          </div>
+        </div>
+      </div>
+      <div class="formFields">
+        <label class="label" id="pwd" for="pwd" >Password:</label>
+        <div>
+          <input [ngClass]="{'has-error':loginForm.controls['password'].errors?.required  && loginForm.controls['password'].dirty}" type="password" class="inputFields form-control" formControlName="password" id="pwd" name="pwd">
+          <div class="validationMessage" *ngIf="loginForm.controls['password'].errors?.required  && loginForm.controls['password'].dirty">
+            <em>Please enter password</em>
+          </div>
+        </div>
+        <div [ngClass]="{'has-error':message}" *ngIf="message">
+            <em class="validationMessage">{{ message }}</em> 
+        </div>
+      </div>
+      <div class="buttons">
+          <button type="submit" class="loginBtn" [disabled]="!loginForm.valid">Login</button>
+
+      </div>
+
+    </form>
+  </div>
+</div> 
+
+
+
